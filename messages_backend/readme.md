@@ -7,3 +7,11 @@ npm init -y
 ```
 npm install express --save
 ```
+
+# run
+```
+node server.js
+```
+
+## test url
+localhost:3000
