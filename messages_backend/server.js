@@ -8,7 +8,7 @@ app.use(cors());
 
 // app.get('/', (req,res) => res.send('test'))
 app.get('/messages', (req,res) => {
-    const messages = [ "Hello", "hi", "its working"];
+    const messages = [ "yes", "tes", "is working"];
 
     res.send(messages);
 })
