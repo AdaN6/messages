@@ -27,3 +27,8 @@ https://vuetifyjs.com/
 npm i vuetify
 
 ```
+
+### Axios
+```
+npm install axios --save
+```

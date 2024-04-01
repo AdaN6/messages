@@ -17,11 +17,19 @@
 </template>
 
 <script>
+// const axios = require('axios');
+import axios from 'axios';
+
+
 export default {
     data() {
         return {
             messages : [ "Hello", "hi", "its working"]
         }
+    },
+    created() {
+        // console.log('created')
+        axios.get('http://localhost:3000/messages')
     }
 }
 </script>
