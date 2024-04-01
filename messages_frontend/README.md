@@ -20,5 +20,10 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Vue Component Framework
+##Vuetify
+https://vuetifyjs.com/
+```
+npm i vuetify
+
+```
