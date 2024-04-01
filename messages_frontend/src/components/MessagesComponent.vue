@@ -27,9 +27,9 @@ export default {
             messages : [ "Hello", "hi", "its working"]
         }
     },
-    created() {
+    async created() {
         // console.log('created')
-        axios.get('http://localhost:3000/messages')
+        this.messages = (await axios.get('http://localhost:3000/messages')).data;
     }
 }
 </script>
