@@ -32,3 +32,8 @@ npm run nodemon
 
 ## test url
 localhost:3000
+
+# CORS
+```
+npm install cors
+```
