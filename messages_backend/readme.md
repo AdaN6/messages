@@ -8,10 +8,27 @@ npm init -y
 npm install express --save
 ```
 
-# run
+# run (without nodemon)
 ```
 node server.js
 ```
+
+# nodemon
+1. 
+```
+npm install -g nodemon
+```
+2.
+add in package.json under scripts 
+```
+"devStart": "nodemon server.js"
+```
+
+## run
+```
+npm run nodemon
+```
+
 
 ## test url
 localhost:3000
