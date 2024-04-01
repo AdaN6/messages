@@ -37,3 +37,8 @@ localhost:3000
 ```
 npm install cors
 ```
+
+# body parser
+```
+npm install body-parser
+```
