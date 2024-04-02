@@ -41,14 +41,11 @@ export default {
             messageBody: ""
         }
     },
-    async created() {
-        // console.log('created')
-        this.messages = (await axios.get('http://localhost:3000/messages')).data;
-    },
     methods: {
                 submit() {
                     // console.log('test')
-                    console.log(this.messageBody)
+                    // console.log(this.messageBody)
+                    axios.post('http://localhost:3000/messages', {message: this.messageBody})
                 }
             }
 }
