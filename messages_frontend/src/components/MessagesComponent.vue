@@ -14,36 +14,55 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
+// import { ref, onMounted } from 'vue';
 import axios from 'axios';
-import mitt from 'mitt';
+// import mitt from 'mitt';
 
-const emitter = mitt();
+// const emitter = mitt();
 
 export default {
-    setup() {
-        const messages = ref([]);
+    // setup() {
+    //     const messages = ref([]);
         
-         // Listen for the newMessage event and update messages array
-        emitter.on('newMessage', (message) => {
-            messages.value.push(message);
-        });
+    //      // Listen for the newMessage event and update messages array
+    //     emitter.on('newMessage', (message) => {
+    //         messages.value.push(message);
+    //     });
 
-        const fetchMessages = async () => {
-            try {
-                const response = await axios.get('http://localhost:3000/messages');
-                messages.value = response.data;
-            } catch (error) {
-                console.error('Error fetching messages:', error);
-            }
-        };
+    //     const fetchMessages = async () => {
+    //         try {
+    //             const response = await axios.get('http://localhost:3000/messages');
+    //             messages.value = response.data;
+    //         } catch (error) {
+    //             console.error('Error fetching messages:', error);
+    //         }
+    //     };
 
-        // Fetch initial messages on component mount
-        onMounted(fetchMessages);
+    //     // Fetch initial messages on component mount
+    //     onMounted(fetchMessages);
 
+    //     return {
+    //         messages,
+    //     };
+    // },
+
+    data() {
         return {
-            messages,
+            messages: []
         };
     },
+
+    mounted() {
+        this.emitter.on("new-message", message => {
+            this.messages.push(message);
+        });
+    },
+
+    async created() {
+        
+        this.messages = (await axios.get("http://localhost:3000/messages")).data;
+    },
+
+    
 };
 </script>

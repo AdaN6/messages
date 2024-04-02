@@ -49,7 +49,7 @@ export default {
             // console.log(this.messageBody)
             try {
                 let msg = await (axios.post('http://localhost:3000/messages', {message: this.messageBody})).data
-                emitter.emit('newMessage', msg.message);
+                emitter.emit('new-message', msg.message);
             }
             catch(error) {
                 console.log(error)
