@@ -1,19 +1,33 @@
 <template>
-    <v-form>
-        <v-container>
-          <v-row>
-            <v-col
-              cols="12"
-              md="4"
-            >
-              <v-text-field
-                label="Message"
-                required
-              ></v-text-field>
-            </v-col>
-          </v-row>
-        </v-container>
-      </v-form>
+    <v-col sm8>
+        <v-card>
+            <v-toolbar dark>
+                    <v-toolbar-title>
+                        New Message
+                    </v-toolbar-title>
+            </v-toolbar>
+            <v-form >
+                <v-container>
+                <v-row justify="d-flex justify-center">
+                    <v-col
+                    cols="12"
+                    >
+                    <v-text-field
+                        label="Message"
+                        required
+                    ></v-text-field>
+                    <v-btn
+                        class="me-4"
+                        type="submit"
+                    >
+                        submit
+                    </v-btn>
+                    </v-col>
+                </v-row>
+                </v-container>
+            </v-form>
+        </v-card>
+    </v-col>
 </template>
 
 <script>

@@ -1,7 +1,9 @@
 <template>
   <v-app>
     <v-content>
+      <br />
       <NewMessage />
+      <br />
       <Messages />
     </v-content>
   </v-app>
