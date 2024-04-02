@@ -6,13 +6,13 @@
                         New Message
                     </v-toolbar-title>
             </v-toolbar>
-            <v-form >
+            <v-form  @submit.prevent="submit">
                 <v-container>
                 <v-row justify="d-flex justify-center">
                     <v-col
                     cols="12"
                     >
-                    <v-text-field
+                    <v-text-field v-model="messageBody"
                         label="Message"
                         required
                     ></v-text-field>
@@ -38,12 +38,18 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            messages: ["Hello", "hi", "its working"]
+            messageBody: ""
         }
     },
     async created() {
         // console.log('created')
         this.messages = (await axios.get('http://localhost:3000/messages')).data;
-    }
+    },
+    methods: {
+                submit() {
+                    // console.log('test')
+                    console.log(this.messageBody)
+                }
+            }
 }
 </script>
