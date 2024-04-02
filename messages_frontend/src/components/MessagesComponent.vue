@@ -15,7 +15,9 @@
 
 <script>
 // import { ref, onMounted } from 'vue';
-import axios from 'axios';
+import store from "../store.js"
+
+
 // import mitt from 'mitt';
 
 // const emitter = mitt();
@@ -48,7 +50,7 @@ export default {
 
     data() {
         return {
-            messages: []
+            messages: store.state.messages
         };
     },
 
@@ -60,7 +62,7 @@ export default {
 
     async created() {
         
-        this.messages = (await axios.get("http://localhost:3000/messages")).data;
+        // this.messages = (await axios.get("http://localhost:3000/messages")).data;
     },
 
     
