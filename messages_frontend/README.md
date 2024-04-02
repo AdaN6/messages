@@ -32,3 +32,8 @@ npm i vuetify
 ```
 npm install axios --save
 ```
+
+### EventBus
+```
+npm install --save mitt
+```
