@@ -5,10 +5,14 @@ import vuetify from './plugins/vuetify'
 import { loadFonts } from './plugins/webfontloader'
 import { createRouter, createWebHistory } from "vue-router";
 import Messages from './components/MessagesComponent.vue'
+import NewMessage from './components/NewMessage.vue'
 
 loadFonts()
 
-const routes = [{ path: "/", component: Messages}];
+const routes = [
+  { path: "/", component: Messages},
+  { path: "/NewMessage", component: NewMessage}
+];
 
 const router = createRouter({
   history: createWebHistory(),

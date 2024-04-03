@@ -1,7 +1,8 @@
 <template>
   <v-app>
     <v-toolbar app>
-      <v-btn>Messages</v-btn>
+      <v-btn to="/">Messages</v-btn>
+      <v-btn to="/NewMessage">New Message</v-btn>
       <v-spacer/>
       <v-btn>Login</v-btn>
 
