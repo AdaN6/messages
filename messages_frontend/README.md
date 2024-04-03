@@ -42,3 +42,8 @@ npm install --save mitt
 ```
 npm install vuex --save
 ```
+
+### Vue Router
+```
+npm install vue-router
+```
