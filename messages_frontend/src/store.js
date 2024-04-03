@@ -39,7 +39,8 @@ const store = createStore({
       }
     },
     async register(_, registerData) {
-        await axios.post("http://localhost:3000/register", registerData)
+       let user = (await axios.post("http://localhost:3000/register", registerData)).data;
+       console.log(user)
     },
     }
 });
