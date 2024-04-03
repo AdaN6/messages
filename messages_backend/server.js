@@ -9,6 +9,7 @@ app.use(cors());
 app.use(bodyParser.json())
 
 const messages = [ "yes", "test", "is working"];
+const users = [];
 
 // app.get('/', (req,res) => res.send('test'))
 app.get('/messages', (req,res) => {
@@ -24,10 +25,17 @@ app.get("/messages/:id", (req, res) => {
 
 app.post('/messages', (req,res) => {
     let msg = req.body
-    console.log(msg);
+    // console.log(msg);
     messages.push(msg.message);
     res.json(msg);
-    console.log(messages);
+    // console.log(messages);
 })
+
+app.post("/register", (req, res) => {
+    let registerData = req.body;
+    users.push(registerData)
+    console.log(users);
+    res.json(registerData);
+});
 
 app.listen(port, () => console.log('app running'))
