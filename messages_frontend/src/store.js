@@ -8,38 +8,40 @@ const store = createStore({
   },
   mutations: {
     updateMessages(state, messages) {
-        state.messages = messages
+      state.messages = messages;
     },
     newMessage(state, message) {
-        state.messages.push(message);
-    }
+      state.messages.push(message);
+    },
   },
   actions: {
-    async getMessages({commit}) {
-        let messages = (await axios.get("http://localhost:3000/messages")).data
-        commit('updateMessages', messages)
-
+    async getMessages({ commit }) {
+      let messages = (await axios.get("http://localhost:3000/messages")).data;
+      commit("updateMessages", messages);
     },
-    async newMessage({commit}, messageBody ) {
-        let msg = (
-          await axios.post("http://localhost:3000/messages", {
-            message: messageBody,
-          })
-        ).data;
-        commit('newMessage', msg.message)
+    async newMessage({ commit }, messageBody) {
+      let msg = (
+        await axios.post("http://localhost:3000/messages", {
+          message: messageBody,
+        })
+      ).data;
+      commit("newMessage", msg.message);
     },
     async getSingleMessage(_, id) {
-        try {
-          const response = await axios.get(
-            `http://localhost:3000/messages/${id}`
-          );
-          return response.data;
-        } catch (error) {
-          console.error("Error fetching single message:", error);
-          throw error; 
-        }
+      try {
+        const response = await axios.get(
+          `http://localhost:3000/messages/${id}`
+        );
+        return response.data;
+      } catch (error) {
+        console.error("Error fetching single message:", error);
+        throw error;
+      }
+    },
+    async register(_, registerData) {
+        await axios.post("http://localhost:3000/register", registerData)
+    },
     }
-  }
 });
 
 export default store;
