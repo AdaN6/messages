@@ -6,7 +6,7 @@
                         New Message
                     </v-toolbar-title>
             </v-toolbar>
-            <v-form  @submit.prevent="submit">
+            <v-form  @submit="submit">
                 <v-container>
                 <v-row justify="d-flex justify-center">
                     <v-col
@@ -48,9 +48,9 @@ export default {
             // console.log('test')
             // console.log(this.messageBody)
             try {
-                let msg = await (axios.post('http://localhost:3000/messages', {message: this.messageBody})).data
+                let msg = await (axios.post('http://localhost:3000/messages', {message: this.messageBody })).data
                 // emitter.emit('new-message', msg.message);
-                this.$store.state.messages.push(msg.message)
+                this.$store.commit('newMessage', msg.message)
             }
             catch(error) {
                 console.log(error)

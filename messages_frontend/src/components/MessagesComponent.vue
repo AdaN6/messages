@@ -15,9 +15,6 @@
 
 <script>
 // import { ref, onMounted } from 'vue';
-import axios from 'axios';
-
-
 
 // import mitt from 'mitt';
 
@@ -49,16 +46,8 @@ export default {
     //     };
     // },
 
-    data() {
-        return {
-            // messages: store.state.messages
-
-        };
-    },
-
     async created() {
-        let messages = (await axios.get("http://localhost:3000/messages")).data
-        this.$store.commit('posts', messages );
+        this.$store.dispatch('getMessages');
     },
 };
 </script>

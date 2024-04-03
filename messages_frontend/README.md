@@ -37,3 +37,8 @@ npm install axios --save
 ```
 npm install --save mitt
 ```
+
+### Vuex (for store)
+```
+npm install vuex --save
+```
