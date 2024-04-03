@@ -33,9 +33,9 @@
 <script>
 // const axios = require('axios');
 import axios from 'axios';
-import mitt from 'mitt';
 
-const emitter = mitt();
+// import mitt from 'mitt';
+// const emitter = mitt();
 
 export default {
     data() {
@@ -49,7 +49,8 @@ export default {
             // console.log(this.messageBody)
             try {
                 let msg = await (axios.post('http://localhost:3000/messages', {message: this.messageBody})).data
-                emitter.emit('new-message', msg.message);
+                // emitter.emit('new-message', msg.message);
+                this.$store.state.messages.push(msg.message)
             }
             catch(error) {
                 console.log(error)

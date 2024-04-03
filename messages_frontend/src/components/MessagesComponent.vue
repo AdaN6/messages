@@ -5,7 +5,7 @@
                 <v-toolbar-title>Messages</v-toolbar-title>
             </v-toolbar>
             <v-list>
-                <v-list-item v-for="(message, i) in messages" :key="i" color="primary">
+                <v-list-item v-for="(message, i) in $store.state.messages" :key="i" color="primary">
                     <v-list-item-title>{{ message }}</v-list-item-title>
                 </v-list-item>
             </v-list>
@@ -15,7 +15,8 @@
 
 <script>
 // import { ref, onMounted } from 'vue';
-import store from "../store.js"
+import axios from 'axios';
+
 
 
 // import mitt from 'mitt';
@@ -50,21 +51,14 @@ export default {
 
     data() {
         return {
-            messages: store.state.messages
+            // messages: store.state.messages
+
         };
     },
 
-    mounted() {
-        this.emitter.on("new-message", message => {
-            this.messages.push(message);
-        });
-    },
-
     async created() {
-        
-        // this.messages = (await axios.get("http://localhost:3000/messages")).data;
+        let messages = (await axios.get("http://localhost:3000/messages")).data
+        this.$store.commit('posts', messages );
     },
-
-    
 };
 </script>
