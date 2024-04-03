@@ -32,7 +32,6 @@
 
 <script>
 // const axios = require('axios');
-import axios from 'axios';
 
 // import mitt from 'mitt';
 // const emitter = mitt();
@@ -48,9 +47,8 @@ export default {
             // console.log('test')
             // console.log(this.messageBody)
             try {
-                let msg = await (axios.post('http://localhost:3000/messages', {message: this.messageBody })).data
-                // emitter.emit('new-message', msg.message);
-                this.$store.commit('newMessage', msg.message)
+                this.$store.dispatch('newMessage', this.messageBody)
+                // this.messageBody is to pass the v-model="messageBody" to the store
             }
             catch(error) {
                 console.log(error)

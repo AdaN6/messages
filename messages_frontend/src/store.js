@@ -19,6 +19,14 @@ const store = createStore({
         let messages = (await axios.get("http://localhost:3000/messages")).data
         commit('updateMessages', messages)
 
+    },
+    async newMessage({commit}, messageBody ) {
+        let msg = (
+          await axios.post("http://localhost:3000/messages", {
+            message: messageBody,
+          })
+        ).data;
+        commit('newMessage', msg.message)
     }
   }
 });
