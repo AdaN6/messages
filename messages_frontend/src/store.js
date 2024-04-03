@@ -39,8 +39,10 @@ const store = createStore({
       }
     },
     async register(_, registerData) {
-       let user = (await axios.post("http://localhost:3000/register", registerData)).data;
-       console.log(user)
+        let user = (await axios.post("http://localhost:3000/register", registerData)).data;
+        console.log(user)
+        // store the ID inside localstorage
+        localStorage.setItem("token")
     },
     }
 });
