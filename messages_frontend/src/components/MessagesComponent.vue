@@ -5,8 +5,8 @@
                 <v-toolbar-title>Messages</v-toolbar-title>
             </v-toolbar>
             <v-list>
-                <v-list-item v-for="(message, i) in $store.state.messages" :key="i" color="primary">
-                    <v-list-item-title>{{ message }}</v-list-item-title>
+                <v-list-item v-for="(message, i) in $store.state.messages" :key="i" color="primary" :to="'Message/' + i">
+                    <v-list-item-title v-text="message"></v-list-item-title>
                 </v-list-item>
             </v-list>
         </v-card>

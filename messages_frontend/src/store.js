@@ -28,7 +28,7 @@ const store = createStore({
         ).data;
         commit('newMessage', msg.message)
     },
-    async getSingleMessage(id) {
+    async getSingleMessage(_, id) {
         try {
           const response = await axios.get(
             `http://localhost:3000/messages/${id}`
@@ -36,7 +36,7 @@ const store = createStore({
           return response.data;
         } catch (error) {
           console.error("Error fetching single message:", error);
-          throw error; // Optionally re-throw the error to handle it in the component
+          throw error; 
         }
     }
   }
