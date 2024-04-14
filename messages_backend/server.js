@@ -27,7 +27,7 @@ app.post('/messages', (req,res) => {
     // console.log(req.header('Authorization'));
     const user = req.header("Authorization");
     // let msg = req.body
-    let msg = { user, ext: msg.message };
+    let msg = { user, text: req.body.message };
     console.log(msg)
     // console.log(msg);
     messages.push(msg);
