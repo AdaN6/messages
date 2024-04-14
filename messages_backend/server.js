@@ -9,7 +9,7 @@ app.use(cors());
 app.use(bodyParser.json())
 
 const messages = [ {user:0, text: "yes"}, {user: 0, text: "test"}, {user: 0, text: "is working"}];
-const users = [];
+const users = [{userName: "A", password: "1"}];
 
 // app.get('/', (req,res) => res.send('test'))
 app.get('/messages', (req,res) => {
@@ -25,9 +25,10 @@ app.get("/messages/:id", (req, res) => {
 
 app.post('/messages', (req,res) => {
     // console.log(req.header('Authorization'));
-    const user = req.header("Authorization");
+    const userId = req.header("Authorization");
+    const user = user[userId];
     // let msg = req.body
-    let msg = { user, text: req.body.message };
+    let msg = { user: user.userName, text: req.body.message };
     console.log(msg)
     // console.log(msg);
     messages.push(msg);
