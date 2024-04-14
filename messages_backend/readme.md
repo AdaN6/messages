@@ -46,3 +46,9 @@ npm install cors
 ```
 npm install body-parser
 ```
+
+## JWT web token
+### Instal
+```
+npm install jsonwebtoken
+```

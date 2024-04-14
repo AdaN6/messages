@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser')
+const jwt = require('jsonwebtoken')
 const app = express();
 
 const port = 3000;
@@ -24,25 +25,45 @@ app.get("/messages/:id", (req, res) => {
 });
 
 app.post('/messages', (req,res) => {
-    // console.log(req.header('Authorization'));
-    const userId = req.header("Authorization");
-    const user = users[userId];
+    
+    // --> simple start
     // let msg = req.body
+    // messages.push(msg.message);
+    // res.json(msg);
+
+    // --> second set of getting userId from header
+    // console.log(req.header('Authorization'));
+    // const userId = req.header("Authorization");
+    // const user = users[userId];
+    // let msg = { user: user.userName, text: req.body.message };
+    // messages.push(msg);
+    // res.json(msg);
+
+    // --> getting authentification payload
+    const token = req.header("Authorization");
+    const userId = jwt.decode(token, '123')
+    const user = users[userId];
     let msg = { user: user.userName, text: req.body.message };
-    console.log(msg)
-    // console.log(msg);
     messages.push(msg);
     res.json(msg);
-    // console.log(messages);
+
 })
 
 app.post("/register", (req, res) => {
     let registerData = req.body;
     let newIndex = users.push(registerData)
-    registerData.id = newIndex - 1;
-    console.log(users);
+    // --> with JWT
+    // registerData.id = newIndex - 1;
+    // res.json(registerData);
+    // console.log(users);
 
-    res.json(registerData);
+    // using jwt for token
+    let userId = newIndex - 1;
+    // payload for first parameter - userId, secret for the second '23'
+    let token = jwt.sign(userId, '123');
+    res.json(token)
+
+
 });
 
 app.listen(port, () => console.log('app running'))
