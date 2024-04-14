@@ -8,7 +8,7 @@ const port = 3000;
 app.use(cors());
 app.use(bodyParser.json())
 
-const messages = [ "yes", "test", "is working"];
+const messages = [ {user:0, text: "yes"}, {user: 0, text: "test"}, {user: 0, text: "is working"}];
 const users = [];
 
 // app.get('/', (req,res) => res.send('test'))
@@ -24,17 +24,23 @@ app.get("/messages/:id", (req, res) => {
 });
 
 app.post('/messages', (req,res) => {
-    let msg = req.body
+    // console.log(req.header('Authorization'));
+    const user = req.header("Authorization");
+    // let msg = req.body
+    let msg = { user, ext: msg.message };
+    console.log(msg)
     // console.log(msg);
-    messages.push(msg.message);
+    messages.push(msg);
     res.json(msg);
     // console.log(messages);
 })
 
 app.post("/register", (req, res) => {
     let registerData = req.body;
-    users.push(registerData)
+    let newIndex = users.push(registerData)
+    registerData.id = newIndex - 1;
     console.log(users);
+
     res.json(registerData);
 });
 

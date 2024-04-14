@@ -28,6 +28,10 @@ add in package.json under scripts
 ```
 npm run nodemon
 ```
+<!-- For after added "devStart": "nodemon server.js" -->
+```
+npm run devStart
+```
 
 
 ## test url

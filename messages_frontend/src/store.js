@@ -39,10 +39,18 @@ const store = createStore({
       }
     },
     async register(_, registerData) {
-        let user = (await axios.post("http://localhost:3000/register", registerData)).data;
+        let user = (await axios.post("http://localhost:3000/register", registerData,
+        {
+             headers: {
+                Authorization: localStorage.getItem("token"),
+            },
+        }
+        )).data;
         console.log(user)
         // store the ID inside localstorage
         localStorage.setItem("token", user.id)
+        // add it as a headers
+        axios.defaults.headers.common["Authorization"] = user.id;
     },
     }
 });
