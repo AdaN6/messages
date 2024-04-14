@@ -7,6 +7,7 @@
             <v-list>
                 <v-list-item v-for="(message, i) in $store.state.messages" :key="i" color="primary" :to="'Message/' + i">
                     <v-list-item-title v-text="message.text"></v-list-item-title>
+                    <v-list-item-sub-title v-text="message.user"></v-list-item-sub-title>
                 </v-list-item>
             </v-list>
         </v-card>
