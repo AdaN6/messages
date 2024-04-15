@@ -5,7 +5,8 @@ import axios from "axios";
 const store = createStore({
   state: {
     messages: [],
-    token : ''
+    // set token in state so even after web app refresh
+    token : localStorage.getItem('token') || ''
   },
   mutations: {
     updateMessages(state, messages) {
