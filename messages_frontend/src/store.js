@@ -18,6 +18,12 @@ const store = createStore({
     auth(state, token) {
       state.token = token;
     },
+    logout(state) {
+      // modify the state
+      state.token = '';
+      // modify the local storage
+      localStorage.clear('token');
+    }
   },
   actions: {
     async getMessages({ commit }) {
