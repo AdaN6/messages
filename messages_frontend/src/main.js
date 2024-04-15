@@ -8,6 +8,7 @@ import Messages from './components/MessagesComponent.vue'
 import NewMessage from './components/NewMessage.vue'
 import SingleMessage from './components/SingleMessage.vue'
 import Register from './components/RegisterComponent.vue'
+import Login from './components/LoginComponent.vue'
 
 loadFonts()
 
@@ -15,7 +16,8 @@ const routes = [
   { path: "/", component: Messages},
   { path: "/NewMessage", component: NewMessage},
   { path: "/Message/:id", component: SingleMessage},
-  { path: "/Register", component: Register}
+  { path: "/Register", component: Register},
+  { path: "/Login", component: Login}
 ];
 
 const router = createRouter({

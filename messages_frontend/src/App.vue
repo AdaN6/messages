@@ -8,7 +8,7 @@
       <!-- <v-btn to="/Register" v-if="!isAuthenticated">Register</v-btn> -->
       <!-- ** using store state -->
       <v-btn to="/Register" v-if="!$store.state.token">Register</v-btn>
-      <v-btn v-if="!$store.state.token">Login</v-btn>
+      <v-btn to="/Login" v-if="!$store.state.token">Login</v-btn>
       <!-- call logout mutation in app component $store.commit('logout') -->
       <v-btn v-if="$store.state.token" @click="$store.commit('logout')">Logout</v-btn>
 
