@@ -52,7 +52,7 @@ app.post('/messages', (req,res) => {
 app.post("/register", (req, res) => {
     let registerData = req.body;
     let newIndex = users.push(registerData)
-    // --> with JWT
+    // --> without JWT
     // registerData.id = newIndex - 1;
     // res.json(registerData);
     // console.log(users);
