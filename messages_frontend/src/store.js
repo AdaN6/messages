@@ -5,6 +5,7 @@ import axios from "axios";
 const store = createStore({
   state: {
     messages: [],
+    token : ''
   },
   mutations: {
     updateMessages(state, messages) {
@@ -12,6 +13,9 @@ const store = createStore({
     },
     newMessage(state, message) {
       state.messages.push(message);
+    },
+    auth(state, token) {
+      state.token = token;
     },
   },
   actions: {
@@ -38,7 +42,7 @@ const store = createStore({
         throw error;
       }
     },
-    async register(_, registerData) {
+    async register({commit}, registerData) {
         // --> using userId
         // let user = (await axios.post("http://localhost:3000/register", registerData,
         // {
@@ -65,6 +69,7 @@ const store = createStore({
 
         // add it as a headers
         axios.defaults.headers.common["Authorization"] = token;
+        commit("auth", token);
     },
     }
 });

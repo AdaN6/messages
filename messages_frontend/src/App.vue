@@ -4,7 +4,10 @@
       <v-btn to="/">Messages</v-btn>
       <v-btn to="/NewMessage">New Message</v-btn>
       <v-spacer/>
-      <v-btn to="/Register" v-if="!isAuthenticated">Register</v-btn>
+      <!-- ** simple authenticated logic with data() -->
+      <!-- <v-btn to="/Register" v-if="!isAuthenticated">Register</v-btn> -->
+      <!-- ** using store state -->
+      <v-btn to="/Register" v-if="!$store.state.token">Register</v-btn>
       <v-btn>Login</v-btn>
 
     </v-toolbar>
@@ -24,7 +27,8 @@ export default {
 
   data () {
     return {
-      isAuthenticated: !!localStorage.getItem('token') || false
+      // --> simple authenticated logic with v-if line 07
+      // isAuthenticated: !!localStorage.getItem('token') || false
     }
   },
 }
