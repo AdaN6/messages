@@ -66,4 +66,21 @@ app.post("/register", (req, res) => {
 
 });
 
+app.post("/login", (req, res) => {
+    let loginData = req.body;
+    // 1. search user to see whether it is in the login data
+    let userId = users.findIndex((user) => user.userName == loginData.userName);
+    // console.log(userId);
+    //  3. user doesnt exist error
+    if (userId == -1)
+        return res.status(401).send({message: "name or password is invalid"});
+    // 2. and then check whether password is matched
+    if (users[userId].password != loginData.password)
+        return res.status(401).send({message: "name or password is invalid"});
+
+    // payload for first parameter - userId, secret for the second '123'
+    let token = jwt.sign(userId, "123");
+    res.json(token);
+});
+
 app.listen(port, () => console.log('app running'))
